@@ -1,4 +1,4 @@
-from django.conf import settings; print(settings.AUTH_USER_MODEL)
+
 from decouple import config
 
 from pathlib import Path
@@ -14,9 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-871caf&3*nuiq(-%5tv2(&o703i-yzb7i(l8y0ns81s9%&7dpy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
+
 
 
 # Application definition
@@ -28,7 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
+    'Core',
     'rest_framework',
 ]
 
@@ -104,7 +105,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'Core.CustomUser'
+AUTH_USER_MODEL = 'Core.User'
 
 
 # Static files (CSS, JavaScript, Images)
