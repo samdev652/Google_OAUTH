@@ -38,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     is_staff =  models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False, help_text="Indicates whether the user has all admin permissions. Defaults to False.")
-    is_active = models.BooleanField(default=False, help_text="Indicates whether the user account is active. Defaults to False and user needs to verify email on signup before it can be set to True.")
+    is_active = models.BooleanField(default=True, help_text="Indicates whether the user account is active. Defaults to False and user needs to verify email on signup before it can be set to True.")
     date_joined = models.DateTimeField(auto_now_add=True, help_text="The date and time when the user joined.")
     
     def __str__(self):
