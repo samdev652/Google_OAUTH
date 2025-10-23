@@ -36,7 +36,7 @@ def google_auth(request):
        last_name = id_info.get('family_name', '')
        profile_pic_url = id_info.get('picture', '')
 
-       user, created = CustomUser.objects.get_or_create(email=email)
+       user, created = User.objects.get_or_create(email=email)
        if created:
         user.set_unusable_password()
         user.first_name = first_name
@@ -71,4 +71,4 @@ def google_auth(request):
 
 @api_view(['GET'])
 def Home(request):
-    return Response('Hey Gys Just written my first Django rest Api in views file')
+    return Response('Hey Guys Just written my first Django rest Api in views file')
