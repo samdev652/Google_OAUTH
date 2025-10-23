@@ -31,9 +31,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Core',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,6 +127,9 @@ REST_FRAMEWORK = {
 
 }
 
+
 # in settings.py
 GOOGLE_OAUTH_CLIENT_ID = config('GOOGLE_OAUTH_CLIENT_ID')
 GOOGLE_OAUTH_CLIENT_SECRET = config('GOOGLE_OAUTH_CLIENT_SECRET')
+
+CORS_ALLOW_ALL_ORIGINS = True
